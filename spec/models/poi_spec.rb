@@ -62,6 +62,7 @@ describe Poi do
     it 'should have a unique lat' do
       lat1 = Poi.create(@attr)
       lat2 = Poi.create(@attr)
+      lat1.should be_valid
       lat2.should_not be_valid
     end
   end
