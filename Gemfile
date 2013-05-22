@@ -10,6 +10,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
+gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
+
 group :development do
   gem "guard-bundler", ">= 1.0.0"
   gem "guard-cucumber", ">= 1.4.0"
@@ -20,9 +23,13 @@ group :development do
   gem "rb-fchange", ">= 0.0.6", :require => false
   gem "quiet_assets", ">= 1.0.2"
   gem "better_errors", ">= 0.7.2"
+  gem "hub", ">= 1.10.2", :require => nil
+  gem "binding_of_caller", ">= 0.7.1", :platforms => [:mri_19, :rbx]
 end
 
 group :test do
+  gem 'shoulda'
+  gem 'shoulda-matchers'
   gem "database_cleaner", ">= 1.0.0.RC1"
   gem "email_spec", ">= 1.4.0"
   gem "cucumber-rails", ">= 1.3.1", :require => false
@@ -30,11 +37,11 @@ group :test do
   gem "capybara", ">= 2.0.3"
 end
 
+group :production do
+  gem "puma", ">= 1.6.3"
+end
+
+gem 'geocoder'
 gem 'jquery-rails'
-gem "puma", ">= 1.6.3", :group => :production
-gem "rspec-rails", ">= 2.12.2", :group => [:development, :test]
-gem "factory_girl_rails", ">= 4.2.0", :group => [:development, :test]
 gem "devise", ">= 2.2.3"
 gem "figaro", ">= 0.6.3"
-gem "binding_of_caller", ">= 0.7.1", :group => :development, :platforms => [:mri_19, :rbx]
-gem "hub", ">= 1.10.2", :require => nil, :group => [:development]
