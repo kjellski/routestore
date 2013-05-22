@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130521164727) do
+ActiveRecord::Schema.define(:version => 20130522090605) do
+
+  create_table "activities", :force => true do |t|
+    t.string   "name"
+    t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pois", :force => true do |t|
     t.float    "latitude"
