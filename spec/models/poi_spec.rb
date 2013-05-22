@@ -2,8 +2,7 @@ require 'spec_helper'
 
 describe Poi do
     before(:each) do
-        @poi       = create(:poi)
-        @poi_attrs = {
+        @attr = {
             :latitude  => 53.553812,
             :longitude => 9.942261,
             :street    => "Lornsenstrasse",
@@ -16,29 +15,29 @@ describe Poi do
 
     it "should not throw anything on creation" do
         assert_nothing_raised do
-            Poi.create!(@poi_attrs)
+            Poi.create!(@attr)
         end
     end
 
     describe "lat lng" do
         it "should require a valid latitude between [-180,180]" do
-            no_lat_poi_neg = Poi.new(@poi_attrs.merge(:latitude => -180.01))
+            no_lat_poi_neg = Poi.new(@attr.merge(:latitude => -180.01))
             no_lat_poi_neg.should_not be_valid
 
-            no_lat_poi_pos = Poi.new(@poi_attrs.merge(:latitude => 180.01))
+            no_lat_poi_pos = Poi.new(@attr.merge(:latitude => 180.01))
             no_lat_poi_pos.should_not be_valid
         end
 
         it "should require a valid longitude between [-90,90]" do
-            no_lng_poi_neg = Poi.new(@poi_attrs.merge(:latitude => -90.01))
+            no_lng_poi_neg = Poi.new(@attr.merge(:latitude => -90.01))
             no_lng_poi_neg.should_not be_valid
 
-            no_lng_poi_pos = Poi.new(@poi_attrs.merge(:latitude => 90.01))
+            no_lng_poi_pos = Poi.new(@attr.merge(:latitude => 90.01))
             no_lng_poi_pos.should_not be_valid
         end
 
         it "uses geocoding for reverse geocoding" do
-            lornsenstrasse = Poi.new(@poi_attrs.merge(:street  => "",
+            lornsenstrasse = Poi.new(@attr.merge(:street  => "",
                                                       :zip     => "",
                                                       :city    => "",
                                                       :state   => "",
