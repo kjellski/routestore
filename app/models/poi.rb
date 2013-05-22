@@ -2,13 +2,16 @@ class Poi < ActiveRecord::Base
   attr_accessible :latitude, :longitude, :zip, :street, :city, :country, :state
 
   validates :latitude,
+            :uniqueness   => true,
             :numericality => {
               :greater_than_or_equal_to => -180,
               :less_than_or_equal_to    => 180
             },
             :presence     => true
 
+  # lat unique
   validates :latitude,
+            :uniqueness => true,
             :numericality => {
               :greater_than_or_equal_to => -90,
               :less_than_or_equal_to    => 90
