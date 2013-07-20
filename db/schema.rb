@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130523204408) do
+ActiveRecord::Schema.define(:version => 20130720155406) do
 
   create_table "pois", :force => true do |t|
     t.float    "latitude"
@@ -24,7 +24,10 @@ ActiveRecord::Schema.define(:version => 20130523204408) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.integer  "route_id"
+    t.integer  "position"
   end
+
+  add_index "pois", ["route_id"], :name => "index_pois_on_route_id"
 
   create_table "routes", :force => true do |t|
     t.string   "name"

@@ -2,13 +2,14 @@
 
 FactoryGirl.define do
   factory :poi do
-    sequence(:latitude) { |n| (0.0 + n) }
+    sequence(:latitude)  { |n| (0.0 + n) }
     sequence(:longitude) { |n| (0.0 + n) }
-    sequence(:street) { |n| "Street#{n}" }
-    sequence(:zip) { |n| "0000#{n}" }
-    sequence(:city) { |n| "city#{n}" }
-    sequence(:state) { |n| "state#{n}" }
-    sequence(:country) { |n| "country#{n}" }
+    sequence(:position)  { |n| n + 1 }
+    sequence(:street)    { |n| "Street#{n}" }
+    sequence(:zip)       { |n| "0000#{n}" }
+    sequence(:city)      { |n| "city#{n}" }
+    sequence(:state)     { |n| "state#{n}" }
+    sequence(:country)   { |n| "country#{n}" }
 
     after(:build) { |poi|
       Geocoder::Lookup::Test.add_stub([poi.latitude, poi.longitude], [
