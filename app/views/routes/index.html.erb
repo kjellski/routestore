@@ -1,0 +1,5 @@
+<h1>Showing ALL the routes!</h1>
+
+<% @routes.each do |route| %>
+  <p>Route: <%=link_to route.name, route %></p>
+<% end %>
