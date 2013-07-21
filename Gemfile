@@ -14,6 +14,7 @@ gem 'rspec-rails', '~>2.12', :group => [:development, :test]
 gem 'factory_girl_rails', '>= 4.2.0', :group => [:development, :test]
 
 group :development do
+  gem 'guard-livereload'
   gem 'guard-bundler', '>= 1.0.0'
   gem 'guard-cucumber', '>= 1.4.0'
   gem 'guard-rails', '>= 0.4.0'
